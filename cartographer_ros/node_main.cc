@@ -47,6 +47,8 @@ namespace cartographer_ros {
 namespace {
 
 void Run() {
+   for(int k = 0; k < 10; ++k) printf("\n####################<Valid Modification>####################\n");
+
   NodeOptions node_options;
   TrajectoryOptions trajectory_options;
   std::tie(node_options, trajectory_options) =

@@ -16,7 +16,7 @@
 -->
 
 <package format="2">
-  <name>cartographer_ros</name>
+  <name>ros2cart</name>
   <!--
   We add 900 to the patch part of the version and then multiply it by 10,
   i.e. our version = `(upstream_patch_version + 900) * 10`,
