@@ -57,12 +57,12 @@ add_library(${PROJECT_NAME} STATIC ${CART_SRCS})
 target_link_libraries(${PROJECT_NAME} cartographer)#???
 
 #4.ROS2CartMap
-add_executable(ros_cartographer_node ${CMAKE_CURRENT_SOURCE_DIR}/cartographer_ros/node_main.cc)
-target_link_libraries(ros_cartographer_node ${PROJECT_NAME})
+add_executable(cartographer_node ${CMAKE_CURRENT_SOURCE_DIR}/cartographer_ros/node_main.cc)
+target_link_libraries(cartographer_node ${PROJECT_NAME})
 
 #5.ROS2CartGrid
-add_executable(ros_occupancy_grid_node ${CMAKE_CURRENT_SOURCE_DIR}/cartographer_ros/occupancy_grid_node_main.cc)
-target_link_libraries(ros_occupancy_grid_node ${PROJECT_NAME})
+add_executable(occupancy_grid_node ${CMAKE_CURRENT_SOURCE_DIR}/cartographer_ros/occupancy_grid_node_main.cc)
+target_link_libraries(occupancy_grid_node ${PROJECT_NAME})
 
 
 # PCL
@@ -78,3 +78,8 @@ endforeach()
 
 set(TARGET_COMPILE_FLAGS "${TARGET_COMPILE_FLAGS} ${GOOG_CXX_FLAGS}")
 set_target_properties(${PROJECT_NAME} PROPERTIES COMPILE_FLAGS ${TARGET_COMPILE_FLAGS})
+
+
+install(DIRECTORY configuration_files DESTINATION share/${PROJECT_NAME}/)
+install(TARGETS ${PROJECT_NAME} ARCHIVE DESTINATION lib)
+install(TARGETS cartographer_node occupancy_grid_node DESTINATION lib/${PROJECT_NAME})
